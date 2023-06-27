@@ -1,4 +1,4 @@
-import sys
+# import sys
 from ting_file_management.file_management import txt_importer
 
 
@@ -11,9 +11,13 @@ def process(path_file, instance):
         "linhas_do_arquivo": file,
     }
 
-    instance.enqueue(dict_info)
-    # print(instance.enqueue(dict_info))
-    return sys.stdout.write(str(dict_info))
+    file_already_exist = any(
+        file_run["nome_do_arquivo"] == path_file for file_run in instance._data
+    )
+
+    if not file_already_exist:
+        instance.enqueue(dict_info)
+    print(dict_info)
 
 
 def remove(instance):
