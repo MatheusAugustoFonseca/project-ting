@@ -17,7 +17,7 @@ class Queue(AbstractQueue):
     def dequeue(self):
         """Aqui irá sua implementação"""
         if not self.__len__:
-            raise ValueError
+            raise ValueError("Não há elementos\n")
         return self._data.pop(0)
 
     def search(self, index):
